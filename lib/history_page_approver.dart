@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HistoryPage extends StatelessWidget {
-  const HistoryPage({super.key});
+class HistoryPageApprover extends StatelessWidget {
+  const HistoryPageApprover({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: const Text('History'),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.home),
-          onPressed: () {
-            // เพิ่มการทำงานสำหรับปุ่มกลับไปหน้าแรก
-          },
-        ),
+        title: const Text('Approver History'),
       ),
       body: _buildHistoryContent(),
     );
@@ -33,29 +25,47 @@ class HistoryPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
-                    child: Text('Book Picture',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white))),
+                  child: Text(
+                    'Book Picture',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 Expanded(
-                    child: Text('Book Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white))),
+                  child: Text(
+                    'Book Name',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 Expanded(
-                    child: Text('Borrowed Date',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white))),
+                  child: Text(
+                    'Borrowed Date',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 Expanded(
-                    child: Text('Returned Date',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white))),
+                  child: Text(
+                    'Returned Date',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 Expanded(
-                    child: Text('Approver ID',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white))),
+                  child: Text(
+                    'Approver ID',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 Expanded(
-                    child: Text('Status',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white))),
+                  child: Text(
+                    'Status',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ],
             ),
           ),
@@ -63,8 +73,7 @@ class HistoryPage extends StatelessWidget {
           Column(
             children: List.generate(10, (index) {
               return Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(color: Colors.grey.shade300),
@@ -82,7 +91,6 @@ class HistoryPage extends StatelessWidget {
                         width: 50,
                       ),
                     ),
-
                     // ชื่อหนังสือ
                     Expanded(
                       child: Text(
@@ -96,22 +104,25 @@ class HistoryPage extends StatelessWidget {
                     ),
                     // Borrowed Date
                     Expanded(
-                        child: Text(
-                      '16/10/2024',
-                      textAlign: TextAlign.center,
-                    )),
+                      child: Text(
+                        '16/10/2024',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                     // Returned Date
                     Expanded(
-                        child: Text(
-                      '25/10/2024',
-                      textAlign: TextAlign.center,
-                    )),
+                      child: Text(
+                        '25/10/2024',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                     // Member ID
                     Expanded(
-                        child: Text(
-                      'M$index',
-                      textAlign: TextAlign.center,
-                    )),
+                      child: Text(
+                        'M$index',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                     // สถานะ
                     Expanded(
                       child: Icon(

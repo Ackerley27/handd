@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 
-class HistoryPage extends StatelessWidget {
-  const HistoryPage({super.key});
+class HistoryPageStaff extends StatelessWidget {
+  const HistoryPageStaff({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: const Text('History'),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.home),
-          onPressed: () {
-            // เพิ่มการทำงานสำหรับปุ่มกลับไปหน้าแรก
-          },
-        ),
+        title: const Text('Staff History'),
       ),
-      body: _buildHistoryContent(),
+      body: _buildHistoryContent(), // เรียกใช้งาน _buildHistoryContent
     );
   }
-  // edit
-  // fff
+
   Widget _buildHistoryContent() {
     return SingleChildScrollView(
       child: Column(
@@ -64,8 +55,7 @@ class HistoryPage extends StatelessWidget {
           Column(
             children: List.generate(10, (index) {
               return Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(color: Colors.grey.shade300),
@@ -83,7 +73,6 @@ class HistoryPage extends StatelessWidget {
                         width: 50,
                       ),
                     ),
-
                     // ชื่อหนังสือ
                     Expanded(
                       child: Text(

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-
-// Import both the HistoryPage and DashboardPage
-import 'history_page_staff.dart'; // ต้องแน่ใจว่าไฟล์นี้มีการปรับปรุง
+import 'history_page_approver.dart';
+import 'history_page_user.dart';
+import 'history_page_staff.dart';
 import 'dashboard_page.dart';
 
-
-
-
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,13 +18,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(role: 'staff'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final String role;
+
+  const MyHomePage({super.key, required this.role});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -36,13 +35,25 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
-  // List of widgets for each tab
-  static final List<Widget> _pages = <Widget>[
-    DashboardPage(),
-    const HistoryPage(), // ใช้ const
-  ];
+  //กำหนด role เพื่อใช้ในการเปลี่ยนหน้า
+  Widget _getHistoryPage() {
+    switch (widget.role) {
+      case 'approver':
+        return const HistoryPageApprover();
+      case 'staff':
+        return const HistoryPageStaff();
+      case 'user':
+      default:
+        return const HistoryPageUser();
+    }
+  }
+//กำหนด role เพื่อใช้ในการเปลี่ยนหน้า
 
-  // When a tab is tapped, this function updates the index
+  List<Widget> get _pages => <Widget>[
+        const DashboardPage(),
+        _getHistoryPage(), // ใช้ฟังก์ชันเพื่อเลือกหน้า History ตาม role
+      ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -53,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        // Display the selected page
+        //แสดงหน้าที่เลือก
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -66,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.history),
             label: 'History',
           ),
-          
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.teal,
